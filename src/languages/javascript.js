@@ -39,6 +39,7 @@ function(hljs) {
     hljs.QUOTE_STRING_MODE,
     NUMBER,
     hljs.REGEXP_MODE,
+    hljs.C_INLINE_BLOCK_COMMENT_MODE,
     hljs.C_BLOCK_COMMENT_MODE,
     hljs.C_LINE_COMMENT_MODE
   ];
@@ -70,6 +71,7 @@ function(hljs) {
       },
       hljs.C_LINE_COMMENT_MODE,
       hljs.C_BLOCK_COMMENT_MODE,
+      hljs.C_INLINE_BLOCK_COMMENT_MODE,
       NUMBER,
       { // object attr container
         begin: /[{,]\s*/, relevance: 0,
@@ -87,6 +89,7 @@ function(hljs) {
         contains: [
           hljs.C_LINE_COMMENT_MODE,
           hljs.C_BLOCK_COMMENT_MODE,
+          hljs.C_INLINE_BLOCK_COMMENT_MODE,
           hljs.REGEXP_MODE,
           {
             className: 'function',

@@ -737,10 +737,10 @@ https://highlightjs.org/
   hljs.PHRASAL_WORDS_MODE = {
     begin: /\b(a|an|the|are|I'm|isn't|don't|doesn't|won't|but|just|should|pretty|simply|enough|gonna|going|wtf|so|such|will|you|your|like)\b/
   };
-  hljs.COMMENT = function (begin, end, inherits) {
+  hljs.COMMENT = function (begin, end, inherits, type) {
     var mode = hljs.inherit(
       {
-        className: 'comment',
+        className: 'comment' + ( type || "" ),
         begin: begin, end: end,
         contains: []
       },
@@ -755,7 +755,8 @@ https://highlightjs.org/
     return mode;
   };
   hljs.C_LINE_COMMENT_MODE = hljs.COMMENT('//', '$');
-  hljs.C_BLOCK_COMMENT_MODE = hljs.COMMENT('/\\*', '\\*/');
+  hljs.C_INLINE_BLOCK_COMMENT_MODE = hljs.COMMENT('/\\*', '\\*/', null, "-inline-block");
+  hljs.C_BLOCK_COMMENT_MODE = hljs.COMMENT('/\\*\\*', '\\*/', null, "-block");
   hljs.HASH_COMMENT_MODE = hljs.COMMENT('#', '$');
   hljs.NUMBER_MODE = {
     className: 'number',
