@@ -34,10 +34,22 @@ function(hljs) {
     ],
     relevance: 0
   };
+  var SEPARATOR = {
+    className: 'separator',
+    begin: "\\s*,\\s*",
+    relevance: 0,
+  }
+  var OPERATOR = {
+    className: "operator",
+    begin: hljs.OPERATORS_RE,
+    relevance: 0,
+  }
   PARAMS_CONTAINS = [
     hljs.APOS_STRING_MODE,
     hljs.QUOTE_STRING_MODE,
+    SEPARATOR,
     NUMBER,
+    OPERATOR,
     hljs.REGEXP_MODE,
     hljs.C_INLINE_BLOCK_COMMENT_MODE,
     hljs.C_BLOCK_COMMENT_MODE,
@@ -73,6 +85,7 @@ function(hljs) {
       hljs.C_BLOCK_COMMENT_MODE,
       hljs.C_INLINE_BLOCK_COMMENT_MODE,
       NUMBER,
+      OPERATOR,
       { // object attr container
         begin: /[{,]\s*/, relevance: 0,
         contains: [
@@ -90,6 +103,7 @@ function(hljs) {
           hljs.C_LINE_COMMENT_MODE,
           hljs.C_BLOCK_COMMENT_MODE,
           hljs.C_INLINE_BLOCK_COMMENT_MODE,
+          OPERATOR,
           hljs.REGEXP_MODE,
           {
             className: 'function',
