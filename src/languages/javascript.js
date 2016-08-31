@@ -44,9 +44,15 @@ function(hljs) {
     begin: hljs.OPERATORS_RE,
     relevance: 0,
   }
+  var IDENTIFIER = {
+    className: "identifier",
+    begin: IDENT_RE,
+    relevance: 0,
+  }
   PARAMS_CONTAINS = [
     hljs.APOS_STRING_MODE,
     hljs.QUOTE_STRING_MODE,
+    IDENTIFIER,
     SEPARATOR,
     NUMBER,
     OPERATOR,
